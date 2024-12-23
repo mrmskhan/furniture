@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Popular = () => {
   return (
@@ -12,35 +13,46 @@ const Popular = () => {
 
       {/* Second div: Large Image */}
       <div className="w-full lg:w-[620px] lg:h-[620px] ml-4 lg:ml-4 mt-4 lg:mt-0">
-        <img
-          src="/feature3.png"
-          alt="big"
-          className="w-full h-auto lg:h-full object-cover"
-        />
+      <Image
+        src="/feature3.png" 
+        alt="big" 
+        className="w-full h-auto lg:h-full object-cover" 
+        layout="responsive" 
+        width={1920} 
+        height={1080}
+      />
       </div>
 
       {/* Third div: Small images in grid */}
       <div className="grid grid-cols-2 gap-2 sm:gap-4 mt-4 lg:mt-0 ml-4 lg:ml-4">
-        <img
-          src="/pop-img2.png"
-          alt="pic1"
-          className="w-[140px] h-[140px] sm:w-[200px] sm:h-[200px] lg:w-[300px] lg:h-[300px] object-cover"
-        />
-        <img
-          src="/pop-img3.png"
-          alt="pic2"
-          className="w-[140px] h-[140px] sm:w-[200px] sm:h-[200px] lg:w-[300px] lg:h-[300px] object-cover"
-        />
-        <img
-          src="/pop-img4.png"
-          alt="pic3"
-          className="w-[140px] h-[140px] sm:w-[200px] sm:h-[200px] lg:w-[300px] lg:h-[300px] object-cover"
-        />
-        <img
-          src="/pop-img5.png"
-          alt="pic4"
-          className="w-[140px] h-[140px] sm:w-[200px] sm:h-[200px] lg:w-[300px] lg:h-[300px] object-cover"
-        />
+      <Image
+        src="/pop-img2.png"
+        alt="pic1"
+        className="object-cover"
+        width={300} 
+        height={300} 
+      />
+      <Image
+        src="/pop-img3.png"
+        alt="pic2"
+        className="object-cover"
+        width={300}
+        height={300} 
+      />
+      <Image
+        src="/pop-img4.png"
+        alt="pic3"
+        className="object-cover"
+        width={300}
+        height={300} 
+      />
+      <Image
+        src="/pop-img5.png"
+        alt="pic4"
+        className="object-cover"
+        width={300} 
+        height={300} 
+      />
       </div>
     </div>
   );

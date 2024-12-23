@@ -1,7 +1,6 @@
-import React from 'react'
-import Get from './get';
-import Section2 from './section2';
-
+import React from "react";
+import Get from "./get";
+import Section2 from "./section2";
 
 const Page = () => {
   return (
@@ -9,7 +8,7 @@ const Page = () => {
       <Get />
       <Section2 />
     </div>
-  )
-}
+  );
+};
 
 export default Page;

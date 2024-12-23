@@ -1,17 +1,20 @@
 import React from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import Image from "next/image";
 
 const Shop = () => {
   return (
     <div className="px-4 lg:px-20">
       <div className="flex flex-col lg:flex-row">
         {/* Image Section */}
-        <img
-          src="feature2.png"
+        <Image
+          src="/feature2.png"
           alt="Image 3"
+          width={600}
+          height={300}
           className="w-full lg:w-[600px] h-[300px] lg:h-[550px] rounded-lg lg:ml-36 lg:mr-20 mb-4 lg:mb-0"
         />
-        
+
         {/* Content Section */}
         <div className="flex flex-col">
           <h1 className="font-inter font-bold text-[40px] lg:text-[60px] leading-[44px] lg:leading-[66px] text-[#272343] mb-4 pr-0 lg:pr-40">

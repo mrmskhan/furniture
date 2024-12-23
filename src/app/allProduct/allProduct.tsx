@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { CiShoppingCart } from "react-icons/ci";
 
-
 const products = [
   {
     title: "Library Stool Chair",
@@ -130,55 +129,90 @@ const AllProducts = () => {
         </div>
       </div>
 
-
- {/* section our subscribe to the news letter */}
-<div className="w-[1500x] h-[354px] mt-[100px] pt-[100px] pr-[300px] pb-[100px] pl-[300px] gap-[70px] bg-[#1E28320D]/[5%]  border-2  overflow-hidden">
-  <div className="w-[760x] h-[165px] mt-[0px] text-center ">
-    <h2 className="font-roboto font-medium text-[50px] leading-[58.59px] my-[9px] text-center text-[#000000]">
-      Or subscribe to the newsletter
-    </h2>
-    {/* form */}
-    <div className="flex justify-center items-center bg-gray-100">
-      <div className="w-[760px] h-[150px] p-4 bg-gray-100 rounded-lg shadow-lg flex items-end justify-between">
-        <form action="#" method="POST" className="w-full flex items-center space-x-4">
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            placeholder="Email Address"
-            className="flex-1 px-4 py-2 border border-gray-300 rounded-lg bg-gray-50"
-          />
-          <button
-            type="submit"
-            className="px-6 py- text-gray-500 bg-gray-100 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring focus:bg-gray-100"
-          >
-            Submit
-          </button>
-        </form>
+      {/* section our subscribe to the news letter */}
+      <div className="w-[1500x] h-[354px] mt-[100px] pt-[100px] pr-[300px] pb-[100px] pl-[300px] gap-[70px] bg-[#1E28320D]/[5%]  border-2  overflow-hidden">
+        <div className="w-[760x] h-[165px] mt-[0px] text-center ">
+          <h2 className="font-roboto font-medium text-[50px] leading-[58.59px] my-[9px] text-center text-[#000000]">
+            Or subscribe to the newsletter
+          </h2>
+          {/* form */}
+          <div className="flex justify-center items-center bg-gray-100">
+            <div className="w-[760px] h-[150px] p-4 bg-gray-100 rounded-lg shadow-lg flex items-end justify-between">
+              <form
+                action="#"
+                method="POST"
+                className="w-full flex items-center space-x-4"
+              >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  placeholder="Email Address"
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg bg-gray-50"
+                />
+                <button
+                  type="submit"
+                  className="px-6 py- text-gray-500 bg-gray-100 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring focus:bg-gray-100"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
 
-{/* discount on Instagram */}
-<div className="w-[1520px] h-[419px] bg-gray-100 rounded-lg border-b-2 border-gray-0 shadow-[0_4px_6px_rgba(0,0,0,0.1)] overflow-hidden "> 
-  <h2 className="w-[1500px] h-[59px] text-center text-black font-roboto font-semibold text-[50px] leading-[58.59px] p-20">
-    Follow products and discounts on Instagram
-  </h2>
-  <div className="flex lg:justify-center lg:items-center lg:space-x-[12px] lg:w-[1500px] lg:h-[150px] lg:mt-[40px] lg:pb-4">
-    <img src="topCat2.png" alt="Image 1" className="w-[200px] h-[200px] object-cover rounded-lg" />
-    <img src="topCat1.png" alt="Image 2" className="w-[200px] h-[200px] object-cover rounded-lg" />
-    <img src="feature2.png" alt="Image 3" className="w-[200px] h-[200px] object-cover rounded-lg" />
-    <img src="pop-img5.png" alt="Image 4" className="w-[200px] h-[200px] object-cover rounded-lg" />
-    <img src="pop-img1.png" alt="Image 5" className="w-[200px] h-[200px] object-cover rounded-lg" />
-    <img src="topCat3.png" alt="Image 6" className="w-[200px] h-[200px] object-cover rounded-lg" />
-  </div>
-</div>
-
-
-
-
+      {/* discount on Instagram */}
+      <div className="w-[1520px] h-[419px] bg-gray-100 rounded-lg border-b-2 border-gray-0 shadow-[0_4px_6px_rgba(0,0,0,0.1)] overflow-hidden ">
+        <h2 className="w-[1500px] h-[59px] text-center text-black font-roboto font-semibold text-[50px] leading-[58.59px] p-20">
+          Follow products and discounts on Instagram
+        </h2>
+        <div className="flex lg:justify-center lg:items-center lg:space-x-[12px] lg:w-[1500px] lg:h-[150px] lg:mt-[40px] lg:pb-4">
+          <Image
+            src="/topCat2.png"
+            alt="Image 1"
+            width={200}
+            height={200}
+            className="object-cover rounded-lg"
+          />
+          <Image
+            src="/topCat1.png"
+            alt="Image 2"
+            width={200}
+            height={200}
+            className="object-cover rounded-lg"
+          />
+          <Image
+            src="/feature2.png"
+            alt="Image 3"
+            width={200}
+            height={200}
+            className="object-cover rounded-lg"
+          />
+          <Image
+            src="/pop-img5.png"
+            alt="Image 4"
+            width={200}
+            height={200}
+            className="object-cover rounded-lg"
+          />
+          <Image
+            src="/pop-img1.png"
+            alt="Image 5"
+            width={200}
+            height={200}
+            className="object-cover rounded-lg"
+          />
+          <Image
+            src="/topCat3.png"
+            alt="Image 6"
+            width={200}
+            height={200}
+            className="object-cover rounded-lg"
+          />
+        </div>
+      </div>
     </main>
   );
 };

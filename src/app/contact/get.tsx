@@ -28,8 +28,12 @@ const Get = () => {
             <h3 className="text-lg font-bold text-center md:text-left md:ml-32">
               Address
             </h3>
-            <p className="text-center md:text-left md:ml-32">236 5th SE Avenue,</p>
-            <p className="text-center md:text-left md:ml-32">New York NY1000,0</p>
+            <p className="text-center md:text-left md:ml-32">
+              236 5th SE Avenue,
+            </p>
+            <p className="text-center md:text-left md:ml-32">
+              New York NY1000,0
+            </p>
             <p className="text-center md:text-left md:ml-32">United States</p>
           </div>
 
@@ -39,8 +43,12 @@ const Get = () => {
             <h3 className="text-lg font-bold text-center md:text-left md:ml-32">
               Phone
             </h3>
-            <p className="text-center md:text-left md:ml-32">Mobile: +(84) 546-6789</p>
-            <p className="text-center md:text-left md:ml-32">Hotline: +(84) 456-6789</p>
+            <p className="text-center md:text-left md:ml-32">
+              Mobile: +(84) 546-6789
+            </p>
+            <p className="text-center md:text-left md:ml-32">
+              Hotline: +(84) 456-6789
+            </p>
           </div>
 
           {/* Working Time */}
@@ -49,8 +57,12 @@ const Get = () => {
             <h3 className="text-lg font-bold text-center md:text-left md:ml-32">
               Working Time
             </h3>
-            <p className="text-center md:text-left md:ml-32">Monday-Friday: 9:00 - 21:00</p>
-            <p className="text-center md:text-left md:ml-32">Saturday-Sunday: 9:00 - 22:00</p>
+            <p className="text-center md:text-left md:ml-32">
+              Monday-Friday: 9:00 - 21:00
+            </p>
+            <p className="text-center md:text-left md:ml-32">
+              Saturday-Sunday: 9:00 - 22:00
+            </p>
           </div>
         </div>
 

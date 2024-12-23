@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Summary = () => {
   return (
@@ -10,9 +10,11 @@ const Summary = () => {
           <span className="text-sm font-medium text-gray-700">Subtotal</span>
           <span className="text-sm font-semibold text-gray-900">$198.00</span>
         </div>
-        
+
         <div className="flex justify-between">
-          <span className="text-sm font-medium text-gray-700">Estimated Delivery & Handling</span>
+          <span className="text-sm font-medium text-gray-700">
+            Estimated Delivery & Handling
+          </span>
           <span className="text-sm font-semibold text-gray-900">Free</span>
         </div>
 

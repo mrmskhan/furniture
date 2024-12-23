@@ -1,12 +1,11 @@
-import React from 'react';
-import { HiOutlineTrophy } from 'react-icons/hi2';
-import { MdVerified } from 'react-icons/md';
+import React from "react";
+import { HiOutlineTrophy } from "react-icons/hi2";
+import { MdVerified } from "react-icons/md";
 
 const Section2 = () => {
   return (
     <div className="flex w-full lg:w-[1120px] lg:ml-52 justify-center items-center bg-[#F4F4F4] p-5 sm:p-7 md:p-10 lg:p-[50px]">
       <div className="w-full max-w-[1070px] flex flex-col sm:flex-row md:flex-row xl:flex-row justify-between gap-10">
-        
         {/* Item 1 */}
         <div className="flex items-center gap-4">
           <HiOutlineTrophy className="w-[50px] h-[50px] sm:w-[55px] sm:h-[55px] md:w-[60px] md:h-[60px] text-[#242424]" />
@@ -45,7 +44,6 @@ const Section2 = () => {
             </p>
           </div>
         </div>
-
       </div>
     </div>
   );

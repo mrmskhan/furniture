@@ -42,12 +42,18 @@ const ProductBox = ({ product }: { product: any }) => (
     <div className="group shadow-md bg-neutral-100 w-[220px] h-[220px] flex justify-center items-center relative cursor-pointer">
       <Image src={product.image} width={220} height={100} alt={product.title} />
     </div>
-    <div className="flex items-center justify-between pt-4"> {/* Flex row for h1 and span */}
-      <h1 className="font-bold font-sans text-sm sm:text-base md:text-lg">{product.title}</h1>
-      <div className="flex items-center gap-4"> {/* Price and oldPrice side by side */}
-        <span className="text-gray-800 font-bold text-sm sm:text-base md:text-lg">{product.price}</span>
+    <div className="flex items-center justify-between pt-4">
+      <h1 className="font-bold font-sans text-sm sm:text-base md:text-lg">
+        {product.title}
+      </h1>
+      <div className="flex items-center gap-4">
+        <span className="text-gray-800 font-bold text-sm sm:text-base md:text-lg">
+          {product.price}
+        </span>
         {product.oldPrice && (
-          <span className="text-gray-400 font-bold line-through text-sm sm:text-base md:text-lg">{product.oldPrice}</span>
+          <span className="text-gray-400 font-bold line-through text-sm sm:text-base md:text-lg">
+            {product.oldPrice}
+          </span>
         )}
       </div>
     </div>
@@ -58,7 +64,7 @@ const Products = () => {
   return (
     <main className=" overflow-hidden">
       <div className="w-full flex justify-center items-center mt-16 mb-32 lg:ml-10">
-        <div className="w-[80%] sm:w-[90%] md:w-[80%] lg:w-[70%]"> {/* Adjust width based on screen */}
+        <div className="w-[80%] sm:w-[90%] md:w-[80%] lg:w-[70%]">
           <div className="flex flex-col">
             <div>
               <h1 className="w-full text-gray-800 font-bold text-left sm:text-md md:text-3xl lg:text-3xl pt-4 pb-10 tracking-widest">
@@ -66,7 +72,7 @@ const Products = () => {
               </h1>
             </div>
           </div>
-          <div className="flex justify-center gap-4 mt-5 flex-wrap sm:flex-nowrap lg:flex-nowrap"> {/* Center on mobile */}
+          <div className="flex justify-center gap-4 mt-5 flex-wrap sm:flex-nowrap lg:flex-nowrap">
             {products.map((product, index) => (
               <ProductBox key={index} product={product} />
             ))}
