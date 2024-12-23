@@ -1,7 +1,15 @@
 import Image from "next/image";
 import { CiShoppingCart } from "react-icons/ci";
 
-const products = [
+// Product type definition
+interface Product {
+  title: string;
+  price: string;
+  oldPrice: string;
+  image: string;
+}
+
+const products: Product[] = [
   {
     title: "Library Stool Chair",
     price: "$20",
@@ -86,7 +94,8 @@ const products = [
   },
 ];
 
-const ProductBox = ({ product }: { product: any }) => (
+// ProductBox component type definition
+const ProductBox = ({ product }: { product: Product }) => (
   <div>
     <div className="group shadow-md bg-neutral-100 w-[260px] h-[260px] flex justify-center items-center relative cursor-pointer ">
       <Image src={product.image} width={260} height={100} alt={product.title} />
@@ -216,4 +225,5 @@ const AllProducts = () => {
     </main>
   );
 };
+
 export default AllProducts;

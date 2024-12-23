@@ -1,28 +1,34 @@
 import Image from "next/image";
 import { CiShoppingCart } from "react-icons/ci";
 
-const products = [
+// Define a type for a product
+type Product = {
+  title: string;
+  price: string;
+  oldPrice: string;
+  image: string;
+};
+
+// Define the products array with the type
+const products: Product[] = [
   {
     title: "Library Stool Chair",
     price: "$20",
     oldPrice: "",
     image: "/feature1.png",
   },
-
   {
     title: "Library Stool Chair",
     price: "$20",
     oldPrice: "$30",
     image: "/feature2.png",
   },
-
   {
     title: "Library Stool Chair",
     price: "$20",
     oldPrice: "",
     image: "/feature3.png",
   },
-
   {
     title: "Library Stool Chair",
     price: "$20",
@@ -31,19 +37,23 @@ const products = [
   },
 ];
 
-const ProductBox = ({ product }: { product: any }) => (
+// Define types for the props of ProductBox component
+type ProductBoxProps = {
+  product: Product;
+};
+
+// Define the ProductBox component
+const ProductBox = ({ product }: ProductBoxProps) => (
   <div>
     <div className="group shadow-md bg-neutral-100 w-[260px] h-[260px] flex justify-center items-center relative cursor-pointer ">
       <Image src={product.image} width={260} height={100} alt={product.title} />
-
-      <button className="w-full absolute bottom-0 bg-black text-white px-4 py-2 rounded-sm opacity-0 hover:opacity-100 transition-opacity duration-300 ">
+      <button className="w-full absolute bottom-0 bg-black text-white px-4 py-2 rounded-sm opacity-0 hover:opacity-100 transition-opacity duration-300">
         Add to Cart
       </button>
     </div>
-    <h1 className="font-bold font-sans pt-4 ">{product.title}</h1>
-
-    <div className="flex items-center  gap-20 space-x-2  mb-10">
-      <span className=" text-gray-800 font-bold">{product.price}</span>
+    <h1 className="font-bold font-sans pt-4">{product.title}</h1>
+    <div className="flex items-center gap-20 space-x-2 mb-10">
+      <span className="text-gray-800 font-bold">{product.price}</span>
       {product.oldPrice && (
         <span className="text-gray-400 font-bold line-through">
           {product.oldPrice}
@@ -54,6 +64,7 @@ const ProductBox = ({ product }: { product: any }) => (
   </div>
 );
 
+// Define the Products component
 const Products = () => {
   return (
     <main>
@@ -76,4 +87,5 @@ const Products = () => {
     </main>
   );
 };
+
 export default Products;

@@ -1,34 +1,37 @@
 import Image from "next/image";
 
-const products = [
+type Product = {
+  title: string;
+  price: string;
+  oldPrice: string;
+  image: string;
+};
+
+const products: Product[] = [
   {
     title: "Library Stool Chair",
     price: "$20",
     oldPrice: "",
     image: "/our-product3.png",
   },
-
   {
     title: "Library Stool Chair",
     price: "$20",
     oldPrice: "",
     image: "/pop-img3.png",
   },
-
   {
     title: "Library Stool Chair",
     price: "$20",
     oldPrice: "$30",
     image: "/topCat3.png",
   },
-
   {
     title: "Library Stool Chair",
     price: "$20",
     oldPrice: "",
     image: "/feature3.png",
   },
-
   {
     title: "Library Stool Chair",
     price: "$20",
@@ -37,7 +40,11 @@ const products = [
   },
 ];
 
-const ProductBox = ({ product }: { product: any }) => (
+type ProductBoxProps = {
+  product: Product;
+};
+
+const ProductBox = ({ product }: ProductBoxProps) => (
   <div>
     <div className="group shadow-md bg-neutral-100 w-[220px] h-[220px] flex justify-center items-center relative cursor-pointer">
       <Image src={product.image} width={220} height={100} alt={product.title} />
@@ -62,7 +69,7 @@ const ProductBox = ({ product }: { product: any }) => (
 
 const Products = () => {
   return (
-    <main className=" overflow-hidden">
+    <main className="overflow-hidden">
       <div className="w-full flex justify-center items-center mt-16 mb-32 lg:ml-10">
         <div className="w-[80%] sm:w-[90%] md:w-[80%] lg:w-[70%]">
           <div className="flex flex-col">
