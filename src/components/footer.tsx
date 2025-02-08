@@ -23,12 +23,7 @@ const Footer = () => {
             {/* Logo + Link 1 */}
             <div className="flex flex-col w-full lg:w-1/3">
               <div className="flex items-center space-x-2">
-                <Image
-                  src="/logo-Icon.png" // Image ka path
-                  alt="Logo" // Alt text
-                  width={48} // Image ki width (12 * 4 = 48px)
-                  height={48} // Image ki height (12 * 4 = 48px)
-                />
+                <Image src="/logo-Icon.png" alt="Logo" width={48} height={48} />
                 <span className="text-lg font-bold text-gray-800">
                   Comfortly
                 </span>

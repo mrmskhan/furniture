@@ -1,10 +1,10 @@
 import React from "react";
-import About from "./about";
+import SinglePage from "./singlePage";
 
 const Page = () => {
   return (
     <div>
-      <About />
+      <SinglePage />
     </div>
   );
 };

@@ -20,11 +20,11 @@ if (!NEXT_PUBLIC_SANITY_PROJECT_ID || !NEXT_PUBLIC_SANITY_AUTH_TOKEN) {
 
 // Create a Sanity client instance to interact with the target Sanity dataset
 const targetClient = createClient({
-  projectId: NEXT_PUBLIC_SANITY_PROJECT_ID, // Your Sanity project ID
+  projectId: "67lzndsl", // Your Sanity project ID
   dataset: NEXT_PUBLIC_SANITY_DATASET || "production", // Default to "production" if not set
   useCdn: false, // Disable CDN for real-time updates
   apiVersion: "2023-01-01", // Sanity API version
-  token: NEXT_PUBLIC_SANITY_AUTH_TOKEN, // API token for authentication
+  token: "skZg1s3jBZ2CnJ2gB7RfYv1HTU5Tkf8kZalMW4YlVrHm1S988Us4rFsLKv8HJnPI51fAF0QdVCaC6jK5Rb0nrT3QTSiCkL9iGQQEYg92WfH0AfItL2Jr3kUK4BEts9Xqtazf7HHltRLVc3Hk5WDiutiLeYUOuE1ah8hLl3YLNzh9xRjKyK5L", // API token for authentication"
 });
 
 // Function to upload an image to Sanity

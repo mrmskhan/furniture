@@ -1,86 +1,43 @@
 import Image from "next/image";
 import { CiShoppingCart } from "react-icons/ci";
+import { client } from "../sanity/lib/client";
+import { ourProductsQuery } from "../sanity/lib/queries/ourProducts-query";
+import { useEffect, useState } from "react";
 
 // Define a type for a product
 type Product = {
+  _id: string;
   title: string;
   price: string;
-  oldPrice: string;
-  image: string;
+  priceWithoutDiscount: string;
+  imageUrl: string;
+  description: string;
 };
 
-// Define the products array with the type
-const products: Product[] = [
-  {
-    title: "Library Stool Chair",
-    price: "$20",
-    oldPrice: "",
-    image: "/feature1.png",
-  },
-  {
-    title: "Library Stool Chair",
-    price: "$20",
-    oldPrice: "$30",
-    image: "/feature2.png",
-  },
-  {
-    title: "Library Stool Chair",
-    price: "$20",
-    oldPrice: "",
-    image: "/feature3.png",
-  },
-  {
-    title: "Library Stool Chair",
-    price: "$20",
-    oldPrice: "",
-    image: "/feature4.png",
-  },
-  {
-    title: "Library Stool Chair",
-    price: "$20",
-    oldPrice: "",
-    image: "/our-product1.png",
-  },
-  {
-    title: "Library Stool Chair",
-    price: "$20",
-    oldPrice: "$30",
-    image: "/our-product2.png",
-  },
-  {
-    title: "Library Stool Chair",
-    price: "$20",
-    oldPrice: "",
-    image: "/our-product.png",
-  },
-  {
-    title: "Library Stool Chair",
-    price: "$20",
-    oldPrice: "",
-    image: "/our-product4.png",
-  },
-];
-
-// Define types for the props of ProductBox component
+// Define the ProductBox component
 type ProductBoxProps = {
   product: Product;
 };
 
-// Define the ProductBox component
 const ProductBox = ({ product }: ProductBoxProps) => (
   <div className="flex flex-col items-center">
     <div className="group shadow-md bg-neutral-100 w-[260px] h-[260px] flex justify-center items-center relative cursor-pointer">
-      <Image src={product.image} width={260} height={260} alt={product.title} />
+      <Image
+        src={product.imageUrl}
+        width={260}
+        height={260}
+        alt={product.title}
+      />
       <button className="w-full absolute bottom-0 bg-black text-white px-4 py-2 rounded-sm opacity-0 hover:opacity-100 transition-opacity duration-300">
         Add to Cart
       </button>
     </div>
     <h1 className="font-bold font-sans pt-4">{product.title}</h1>
     <div className="flex items-center gap-4 mb-10">
-      <span className="text-gray-800 font-bold">{product.price}</span>
-      {product.oldPrice && (
+      <span className="text-gray-800 font-bold">${product.price}</span>
+      {product.priceWithoutDiscount && (
         <span className="text-gray-400 font-bold line-through">
-          {product.oldPrice}
+          ${product.priceWithoutDiscount}
         </span>
       )}
       <CiShoppingCart className="text-gray-800 w-[22px] h-[22px] pl-2 hover:bg-green-600 cursor-pointer" />
@@ -90,6 +47,34 @@ const ProductBox = ({ product }: ProductBoxProps) => (
 
 // Define the Products component
 const Products = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const fetchedProducts = await client.fetch(ourProductsQuery);
+        setProducts(fetchedProducts);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="w-full flex justify-center items-center mt-16">
+        <h1 className="text-gray-800 font-bold sm:text-md md:text-2xl lg:text-2xl">
+          Loading...
+        </h1>
+      </div>
+    );
+  }
+
   return (
     <main>
       <div className="w-full flex justify-center items-center mt-16 mb-1 pb-20">
@@ -100,8 +85,8 @@ const Products = () => {
             </h1>
           </div>
           <div className="flex flex-wrap justify-between mt-5 gap-y-5">
-            {products.map((product, index) => (
-              <ProductBox key={index} product={product} />
+            {products.map((product) => (
+              <ProductBox key={product._id} product={product} />
             ))}
           </div>
         </div>

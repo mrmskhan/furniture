@@ -1,43 +1,94 @@
-import React from "react";
-import { FaShoppingCart } from "react-icons/fa";
+"use client";
+
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { CiShoppingCart } from "react-icons/ci";
+import { client } from "../../sanity/lib/client";
+import { allProducts1Query } from "../../sanity/lib/queries/allProduct-query";
+
+// Product type
+type Product = {
+  title: string;
+  price: string;
+  oldPrice?: string;
+  imageUrl: string;
+  slug?: {
+    current: string;
+  };
+};
+
+// Utility function to shuffle array
+const shuffleArray = (array: Product[]) => {
+  return array
+    .map((item) => ({ item, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ item }) => item);
+};
+
+// ProductBox Component
+const ProductBox = ({ product }: { product: Product }) => (
+  <div>
+    <div className="group shadow-md bg-neutral-100 w-[260px] h-[260px] flex justify-center items-center relative cursor-pointer">
+      <Link href={`/singleProductPage/${product.slug?.current || ""}`}>
+        <Image
+          src={product.imageUrl}
+          width={260}
+          height={100}
+          alt={product.title}
+          priority
+        />
+      </Link>
+      <button className="w-full absolute bottom-0 bg-black text-white px-4 py-2 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        Add to Cart
+      </button>
+    </div>
+    <h1 className="font-bold font-sans pt-4 text-center">{product.title}</h1>
+    <div className="flex items-center justify-between space-x-4 mt-2">
+      <span className="text-gray-800 font-bold">{product.price}</span>
+      {product.oldPrice && (
+        <span className="text-gray-400 font-bold line-through">
+          {product.oldPrice}
+        </span>
+      )}
+      <CiShoppingCart className="text-gray-800 w-[22px] h-[22px] hover:text-green-600 transition-colors" />
+    </div>
+  </div>
+);
 
 const Shop = () => {
-  return (
-    <div className="px-4 lg:px-20">
-      <div className="flex flex-col lg:flex-row">
-        {/* Image Section */}
-        <Image
-          src="/feature2.png"
-          alt="Image 3"
-          width={600}
-          height={300}
-          className="w-full lg:w-[600px] h-[300px] lg:h-[550px] rounded-lg lg:ml-36 lg:mr-20 mb-4 lg:mb-0"
-        />
+  const [products, setProducts] = useState<Product[]>([]);
 
-        {/* Content Section */}
-        <div className="flex flex-col">
-          <h1 className="font-inter font-bold text-[40px] lg:text-[60px] leading-[44px] lg:leading-[66px] text-[#272343] mb-4 pr-0 lg:pr-40">
-            Library Stool Chair
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const fetchedProducts = await client.fetch(allProducts1Query);
+        const shuffledProducts = shuffleArray(fetchedProducts);
+        console.log("Fetched and Shuffled Products: ", shuffledProducts);
+        setProducts(shuffledProducts);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  return (
+    <main>
+      <div className="w-full flex justify-center items-center mt-16 mb-20">
+        <div className="w-[80%]">
+          <h1 className="text-center text-gray-800 font-bold text-3xl pt-4 pb-10">
+            Products
           </h1>
-          <button className="w-[118px] h-[32px] font-inter font-semibold text-[16px] lg:text-[20px] leading-[22px] text-white bg-[#029FAE] rounded-full p-1">
-            $20.00 USD
-          </button>
-          <div className="w-full lg:w-[521px] h-[1px] bg-[#D9D9D9] mt-6 lg:mt-10"></div>
-          <div>
-            <p className="w-full lg:w-[543px] opacity-60 font-inter font-normal text-[18px] lg:text-[22px] leading-[26px] lg:leading-[33px] text-[#272343] mt-5 mb-5 rounded-lg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              tincidunt erat enim. Lorem ipsum dolor sit amet, consectetur
-              adipiscing
-            </p>
+          <div className="flex flex-wrap justify-center gap-5">
+            {products.map((product, index) => (
+              <ProductBox key={index} product={product} />
+            ))}
           </div>
-          <button className="flex flex-row justify-center items-center px-4 lg:px-6 py-3 gap-2.5 mt-2 w-full lg:w-[212px] h-[50px] lg:h-[63px] bg-[#029FAE] rounded-lg text-white">
-            <FaShoppingCart className="w-5 h-5" />
-            Add to Cart
-          </button>
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

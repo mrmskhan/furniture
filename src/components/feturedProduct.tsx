@@ -1,5 +1,8 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { CiShoppingCart } from "react-icons/ci";
+import { client } from "../sanity/lib/client";
+import { featuredQuery } from "../sanity/lib/queries/featured-query";
 
 // Define a type for a product
 type Product = {
@@ -8,34 +11,6 @@ type Product = {
   oldPrice: string;
   image: string;
 };
-
-// Define the products array with the type
-const products: Product[] = [
-  {
-    title: "Library Stool Chair",
-    price: "$20",
-    oldPrice: "",
-    image: "/feature1.png",
-  },
-  {
-    title: "Library Stool Chair",
-    price: "$20",
-    oldPrice: "$30",
-    image: "/feature2.png",
-  },
-  {
-    title: "Library Stool Chair",
-    price: "$20",
-    oldPrice: "",
-    image: "/feature3.png",
-  },
-  {
-    title: "Library Stool Chair",
-    price: "$20",
-    oldPrice: "",
-    image: "/feature4.png",
-  },
-];
 
 // Define types for the props of ProductBox component
 type ProductBoxProps = {
@@ -66,6 +41,34 @@ const ProductBox = ({ product }: ProductBoxProps) => (
 
 // Define the Products component
 const Products = () => {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    // Fetch featured products from Sanity
+    const fetchFeaturedProducts = async () => {
+      try {
+        const fetchedProducts = await client.fetch(featuredQuery);
+        console.log("Fetched Featured Products: ", fetchedProducts);
+
+        // Map the fetched data to match the Product type
+        const formattedProducts = fetchedProducts.map((product: any) => ({
+          title: product.title,
+          price: `$${product.price}`,
+          oldPrice: product.priceWithoutDiscount
+            ? `$${product.priceWithoutDiscount}`
+            : "",
+          image: product.imageUrl || "/default-image.png",
+        }));
+
+        setProducts(formattedProducts);
+      } catch (error) {
+        console.error("Error fetching featured products:", error);
+      }
+    };
+
+    fetchFeaturedProducts();
+  }, []);
+
   return (
     <main>
       <div className="w-full flex justify-center items-center mt-16 mb-1">
@@ -78,9 +81,13 @@ const Products = () => {
             </div>
           </div>
           <div className="flex flex-wrap justify-between mt-5 gap-y-5">
-            {products.map((product, index) => (
-              <ProductBox key={index} product={product} />
-            ))}
+            {products.length > 0 ? (
+              products.map((product, index) => (
+                <ProductBox key={index} product={product} />
+              ))
+            ) : (
+              <div>Loading Featured Products...</div>
+            )}
           </div>
         </div>
       </div>

@@ -44,8 +44,8 @@ const Navbar = () => {
             <Image
               src="/logo-Icon.png"
               alt="Comforty Logo"
-              width={48} // Image ki width specify karein
-              height={48} // Image ki height specify karein
+              width={48}
+              height={48}
             />
             <span className="text-xl font-bold text-gray-700">Comforty</span>
           </div>
@@ -54,7 +54,7 @@ const Navbar = () => {
           <div className="relative hidden md:flex bg-white w-[120] h-[144] gap-6 items-center">
             <BsCartDash size={30} className="text-gray-700" />
             <span className="absolute left-4  text-black-800 text-lg  px-8">
-              <Link href="/pages" className="hover:text-teal-600">
+              <Link href="/Cart" className="hover:text-teal-600">
                 Cart
               </Link>
             </span>
@@ -91,7 +91,7 @@ const Navbar = () => {
               Product
             </Link>
 
-            <Link href="/pages" className="hover:text-teal-600">
+            <Link href="/singleProductPage" className="hover:text-teal-600">
               Pages
             </Link>
 
@@ -121,7 +121,7 @@ const Navbar = () => {
           <Link href="/allProduct" className="hover:text-teal-600">
             Product
           </Link>
-          <Link href="/pages" className="hover:text-teal-600">
+          <Link href="/singleProductPage" className="hover:text-teal-600">
             Pages
           </Link>
           <Link href="/about" className="hover:text-teal-600">

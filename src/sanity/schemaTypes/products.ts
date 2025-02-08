@@ -11,6 +11,14 @@ export const productSchema = defineType({
       type: "string",
     },
     {
+      name: "slug",
+      title: "slug",
+      type: "slug",
+      options: {
+        source: "title"
+      }
+    },
+    {
       name: "price",
       title: "Price",
       type: "number",
@@ -54,11 +62,12 @@ export const productSchema = defineType({
       options: {
         list: [
           { title: "Featured", value: "featured" },
-          {
-            title: "Follow products and discounts on Instagram",
-            value: "instagram",
-          },
+          { title: "Instagram", value: "instagram"},
           { title: "Gallery", value: "gallery" },
+          { title: "Popular", value: "popular" },
+          { title: "OurProducts", value: "ourProducts" },
+          { title: "FeaturedProducts", value: "featuredProducts" },
+          
         ],
       },
     },
